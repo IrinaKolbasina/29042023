@@ -30,12 +30,13 @@ public class Radio {
     }
 
     public void minusVolume() {
-        if (currentVolume >= 100) {
+        if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
         } else {
             currentVolume = 0;
         }
     }
+
 
 
     public int getCurrentStation() {

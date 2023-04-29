@@ -113,11 +113,11 @@ public class RadioTest {
     @Test
     public void testNextVolumeMinusOne() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(5);
+        radio.setCurrentVolume(10);
 
         radio.minusVolume();
 
-        int expected = 4;
+        int expected = 9;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
