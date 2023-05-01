@@ -204,5 +204,29 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void testAfterLimitZero() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-2);
+
+        radio.minusVolume();
+
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testAfterLimitCent() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(150);
+
+        radio.increaseVolume();
+
+        int expected = 1;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
 
 }
