@@ -2,6 +2,40 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+
+      @Test
+    public void testStationCount() {
+
+          int stationCount = 9;
+          Radio radio = new Radio(stationCount);
+          radio.setCurrentStation(0);
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testStationCountForZeroStation() {
+
+        int stationCount = 0;
+        Radio radio = new Radio(stationCount);
+        radio.setCurrentStation(1);
+        int expected = 1;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testStationCountForStationInTheMiddle() {
+
+        int stationCount = 5;
+        Radio radio = new Radio(stationCount);
+        radio.setCurrentStation(4);
+        int expected = 4;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
     @Test
     public void testLastStation() {
         Radio radio = new Radio();
@@ -166,6 +200,30 @@ public class RadioTest {
         radio.minusVolume();
 
         int expected = 0;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testAfterLimitZero() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-2);
+
+        radio.minusVolume();
+
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testAfterLimitCent() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(150);
+
+        radio.increaseVolume();
+
+        int expected = 1;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
